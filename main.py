@@ -1,48 +1,31 @@
 import os
 import requests
 import json
-
-GITHUB_API_URL = "https://api.github.com/"
-username = "JideMartins"
-
-def convert_json(json_string):
-    return json.loads(json_string)
-
-def convert_dictionary(data_dict):
-    return json.dumps(data_dict, indent=4)
-
-def load_json(json_file):
-
-    if not os.path.exists(json_file):
-        # create file if it doesn't exists
-        with open(json_file, "w"):
-            pass
-    with open(json_file) as f:
-        json_string = f.read().strip()
-
-    if not json_string:
-        return "{}"
-    
-    return json_string
-
-def dump_json(json_file, data_json):
-    with open(json_file, "w") as f:
-        f.write(data_json)
+from pprint import pprint
 
 
-# State url here
-url = f"{GITHUB_API_URL}/users/{username}"
+
+GITHUB_API_URL = "https://api.github.com"
+USERNAME = "JideMartins"
+
+# endpoint url
+url = f"{GITHUB_API_URL}/users/{USERNAME}"
+
 
 # Get response
 response = requests.get(url)
 
 # conditionals
-if response == 200:
-    user_data = response.json()
-    # print(user_data)
+if response.status_code == 200:
+    user_data = response.json() # returns dictionary
+    user_json = json.dumps(user_data, indent=4)
+    with open("user_data.json", "w") as f:
+        f.write(user_json)
+    # print(user_json)
+    # print(type(user_data))
+    # pprint(user_data)
     
 else:
     print(f"Error fetching data: Status Code: {response.status_code}")
-    print(response.json())
 
 
