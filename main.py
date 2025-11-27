@@ -21,6 +21,7 @@ try:
         user_json = json.dumps(user_data, indent=4)
         with open("user_data.json", "w") as f:
             f.write(user_json)
+            print("user data exported!")
         
     else:
         print(f"Error fetching data: Status Code: {response.status_code}")
