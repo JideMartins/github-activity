@@ -11,5 +11,9 @@ parser.add_argument("username", type=str, help="Valid GitHub Username")
 args = parser.parse_args()
 
 
-# Use argument
-get_events(args.username)
+# define main as entry point
+def main():
+    get_events(args.username)
+
+if __name__ == "__main__":
+    main()
