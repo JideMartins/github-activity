@@ -26,9 +26,11 @@ def get_events(username):
         response = requests.get(url=events_url, headers=headers, params=event_params)
         response.raise_for_status()
         activities = response.json()
-    except:
-        print("failed to fetch Github Data")
+    except requests.exceptions.RequestException as e:
         activities = []
+        print(f"failed to fetch Github Data: {e}")
+        # If fetching fails
+        return
 
     # Main Logic
     print(f"Recent Activity Feed for {username}: ")
@@ -36,7 +38,11 @@ def get_events(username):
 
     for activity in activities:
         event_type = activity.get("type")
-        repo_name = activity["repo"]["name"]
+
+        try:
+            repo_name = activity["repo"]["name"]
+        except KeyError:
+            continue # If repo name is missing
 
         output_message = ""
 
@@ -83,13 +89,13 @@ def get_events(username):
 
         # return message
         if output_message:
-            return f"- {output_message}"     
+            print(f"- {output_message}")     
 
 
 
 
 # test
-print(get_events("octocat"))
+get_events("octocat")
 
 # # endpoint url
 # url = f"{GITHUB_API_URL}/users/{USERNAME}"
