@@ -15,7 +15,17 @@ headers = {
 }
 
 def get_events(username):
-    pass
+
+    # from GitHub API doc
+    events_url = f"{BASE_URL}/users/{username}/events/public"
+    event_params = {"per_page": 10}
+
+    response = requests.get(url=events_url, headers=headers, params=event_params)
+
+    return response.status_code
+
+# test
+print(get_events("octocat"))
 
 # # endpoint url
 # url = f"{GITHUB_API_URL}/users/{USERNAME}"
