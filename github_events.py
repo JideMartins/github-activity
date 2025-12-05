@@ -41,6 +41,14 @@ def get_events(username):
         output_message = ""
 
         # Push event
+        if event_type == "PushEvent":
+            # The 'size' field in the payload often correctly reports the number of commits
+            commit_count = activity["payload"].get("size", 0)
+            if commit_count > 0:
+                output_message = f"Pushed {commit_count} commit{'s' if commit_count > 1 else ''} to {repo_name}"
+            else:
+                # Handle the specific case where 'size' is 0 or missing (your previous error case)
+                output_message = f"Pushed code to {repo_name} (details unavailable)"
 
 
     # return activities
