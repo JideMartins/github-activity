@@ -68,7 +68,7 @@ Follow these steps to set up the project and install the CLI tool in an isolated
 Open your terminal or command prompt and clone the project:
 
 ```bash
-git clone https://github.com/YourUsername/github-activity-cli.git
+git clone https://github.com/JideMartins/github-activity-cli.git
 cd github-activity-cli
 ```
 
@@ -101,7 +101,6 @@ Test that the `gitact` command is correctly installed and accessible by asking i
 ```bash
 gitact --help
 ```
-
 ##### Expected Output
 
 The output will show the description you defined in `cli.py` and confirm the required `username` argument:
@@ -195,7 +194,6 @@ Recent Activity Feed for octocat:
 - Created new repository: octocat/test-repo
 ... (5 more activities)
 ```
-
 -----
 
 ## 5\. Project Structure
