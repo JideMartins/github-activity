@@ -3,7 +3,7 @@
 
 **Simple Python Command-Line Interface (CLI) tool to fetch and display a user's 10 most recent public GitHub activities.**
 
-![GitHub Activity Demo](img/gitact-demo.gif)
+![GitHub Activity Demo](img/github-activity-demo.gif)
 
 This project demonstrates professional API interaction using Python's `requests` library, secure authentication via environment variables, and robust data parsing.
 
