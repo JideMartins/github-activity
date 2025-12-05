@@ -17,6 +17,21 @@ headers = {
 
 def get_events(username):
 
+    '''
+    Fetches and prints the 10 most recent public activity events for a given GitHub user.
+    Function communicates with the GitHub REST API, handles common HTTP errors, 
+    and formats the raw event data (like Push, Issue, and Watch events) into 
+    human-readable messages, printing them directly to the console.
+    
+    Args:
+        username (str): The GitHub username whose public activity feed should be fetched.
+    
+    Note:
+        - Requires 'BASE_URL' and 'headers' (containing a GitHub PAT) to be defined 
+          in the scope where this function is called.
+        - Prints an error message and stops if the API call fails or if the user is not found.
+    '''
+
     # from GitHub API doc
     events_url = f"{BASE_URL}/users/{username}/events/public"
     event_params = {"per_page": 10}
