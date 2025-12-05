@@ -11,15 +11,15 @@ github_token = os.environ.get("GITHUB_PAT")
 headers = {
     "Authorization": f"token {github_token}",
     "accept": "application/vnd.github+json",
-    "User-Agent": "github-activity/0.1"
+    "User-Agent": "github-activity/0.1",
 }
+
 
 def get_events(username):
 
     # from GitHub API doc
     events_url = f"{BASE_URL}/users/{username}/events/public"
     event_params = {"per_page": 10}
-
 
     # handle errors
     try:
@@ -29,9 +29,21 @@ def get_events(username):
     except:
         print("failed to fetch Github Data")
         activities = []
-    
-    return activities
 
+    # Main Logic
+    print(f"Recent Activity Feed for {username}: ")
+    print("-" * 30)
+
+    for activity in activities:
+        event_type = activity.get("type")
+        repo_name = activity["repo"]["name"]
+
+        output_message = ""
+
+        # Push event
+
+
+    # return activities
 
 
 # test
@@ -51,7 +63,7 @@ print(get_events("octacat"))
 #         with open("user_data.json", "w") as f:
 #             f.write(user_json)
 #             print("user data exported!")
-        
+
 #     else:
 #         print(f"Error fetching data: Status Code: {response.status_code}")
 # except requests.exceptions.RequestException as e:
@@ -60,6 +72,3 @@ print(get_events("octacat"))
 #     print(f"Error parsing JSON response: {e}")
 # except IOError as e:
 #     print(f"Error writing to file: {e}")
-
-
-
