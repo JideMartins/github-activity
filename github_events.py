@@ -7,6 +7,16 @@ BASE_URL = "https://api.github.com"
 # set token to env variable
 github_token = os.environ.get("GITHUB_PAT")
 
+# add header
+headers = {
+    "Authorization": f"token {github_token}",
+    "accept": "application/vnd.github+json",
+    "User-Agent": "github-activity/0.1"
+}
+
+def get_events(username):
+    pass
+
 # # endpoint url
 # url = f"{GITHUB_API_URL}/users/{USERNAME}"
 
