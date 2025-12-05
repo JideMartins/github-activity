@@ -32,7 +32,7 @@ def get_events(username):
 
     # Main Logic
     print(f"Recent Activity Feed for {username}: ")
-    print("-" * 30)
+    print("-" * 50)
 
     for activity in activities:
         event_type = activity.get("type")
@@ -50,12 +50,46 @@ def get_events(username):
                 # Handle the specific case where 'size' is 0 or missing (your previous error case)
                 output_message = f"Pushed code to {repo_name} (details unavailable)"
 
+        # Issue Events (Open a new issue)
+        elif event_type == "IssuesEvent":
+            action = activity["payload"].get("action")  # e.g., 'opened', 'closed'
+            issue_title = activity["payload"]["issue"]["title"]
+            output_message = f"{action.capitalize()} issue: '{issue_title}' in {repo_name}"
 
-    # return activities
+        # Pull Request Events
+        elif event_type == "PullRequestEvent":
+            action = activity["payload"].get("action")
+            pr_title = activity["payload"]["pull_request"]["title"]
+            output_message = (
+                f"{action.capitalize()} Pull Request: '{pr_title}' in {repo_name}"
+            )
+
+        # Create Events (New repository/branch)
+        elif event_type == "CreateEvent":
+            ref_type = activity["payload"].get("ref_type")  # e.g., 'repository', 'branch'
+            if ref_type == "repository":
+                output_message = f"Created new repository: {repo_name}"
+            elif ref_type == "branch":
+                branch_name = activity["payload"].get("ref")
+                output_message = f"Created branch {branch_name} in {repo_name}"
+
+        # WatchEvent (Starring a repository)
+        elif event_type == "WatchEvent":
+            output_message = f"Starred repository {repo_name}"
+
+        # Default/Unknown Events
+        else:
+            output_message = f"Performed a {event_type} in {repo_name}"
+
+        # return message
+        if output_message:
+            return f"- {output_message}"     
+
+
 
 
 # test
-print(get_events("octacat"))
+print(get_events("octocat"))
 
 # # endpoint url
 # url = f"{GITHUB_API_URL}/users/{USERNAME}"
