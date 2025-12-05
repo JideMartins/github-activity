@@ -20,12 +20,22 @@ def get_events(username):
     events_url = f"{BASE_URL}/users/{username}/events/public"
     event_params = {"per_page": 10}
 
-    response = requests.get(url=events_url, headers=headers, params=event_params)
 
-    return response.status_code
+    # handle errors
+    try:
+        response = requests.get(url=events_url, headers=headers, params=event_params)
+        response.raise_for_status()
+        activities = response.json()
+    except:
+        print("failed to fetch Github Data")
+        activities = []
+    
+    return activities
+
+
 
 # test
-print(get_events("octocat"))
+print(get_events("octacat"))
 
 # # endpoint url
 # url = f"{GITHUB_API_URL}/users/{USERNAME}"
