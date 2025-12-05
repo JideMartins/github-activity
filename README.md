@@ -1,3 +1,4 @@
+[![Roadmap.sh Project](https://img.shields.io/badge/Project-Roadmap.sh-blue.svg)](https://roadmap.sh/projects/github-user-activity)
 # 🐙 GitHub Activity CLI (`gitact`)
 
 **Simple Python Command-Line Interface (CLI) tool to fetch and display a user's 10 most recent public GitHub activities.**
@@ -6,7 +7,6 @@
 
 This project demonstrates professional API interaction using Python's `requests` library, secure authentication via environment variables, and robust data parsing.
 
-[![Roadmap.sh Project](https://img.shields.io/badge/Project-Roadmap.sh-blue.svg)](https://roadmap.sh/projects/github-user-activity)
 
 ## Table of Contents
 
