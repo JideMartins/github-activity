@@ -2,6 +2,8 @@
 
 **Simple Python Command-Line Interface (CLI) tool to fetch and display a user's 10 most recent public GitHub activities.**
 
+![GitHub Activity Demo](img/gitact-demo.gif)
+
 This project demonstrates professional API interaction using Python's `requests` library, secure authentication via environment variables, and robust data parsing.
 
 [![Roadmap.sh Project](https://img.shields.io/badge/Project-Roadmap.sh-blue.svg)](https://roadmap.sh/projects/github-user-activity)
@@ -43,7 +45,7 @@ Here is the revised setup table, including the instructions for **Windows PowerS
 | :--- | :--- | :--- |
 | **Linux/macOS** | `python3 -m venv venv` | `source venv/bin/activate` |
 | **Windows (CMD)** | `py -m venv venv` | `venv\Scripts\activate` |
-| **Windows (PowerShell)** | `py -m venv venv` | **`.\venv\Scripts\Activate.ps1`** |
+| **Windows (PowerShell)** | `py -m venv venv` | `.\venv\Scripts\Activate.ps1`|
 
 ### Combined Activation Commands
 
@@ -53,7 +55,7 @@ To make the process easier for users, you can combine the create and activate st
 | :--- | :--- |
 | **Linux/macOS** | `python3 -m venv venv && source venv/bin/activate` |
 | **Windows (CMD)** | `py -m venv venv` & `venv\Scripts\activate` |
-| **Windows (PowerShell)** | `py -m venv venv` **;** **`.\venv\Scripts\Activate.ps1`** |
+| **Windows (PowerShell)** | `py -m venv venv` ;`.\venv\Scripts\Activate.ps1` |
 
 -----
 
@@ -78,7 +80,7 @@ It is highly recommended to use a virtual environment to manage dependencies. Ru
 | :--- | :--- |
 | **Linux/macOS** | `python3 -m venv venv && source venv/bin/activate` |
 | **Windows (CMD)** | `py -m venv venv` & `venv\Scripts\activate` |
-| **Windows (PowerShell)** | `py -m venv venv` **;** **`.\venv\Scripts\Activate.ps1`** |
+| **Windows (PowerShell)** | `py -m venv venv` ;`.\venv\Scripts\Activate.ps1` |
 
 
 #### Step 3: Install Dependencies and the CLI Tool
@@ -146,7 +148,6 @@ You need to set the environment variable **`GITHUB_PAT`** in your current termin
 
 That's a crucial point! Confirming the environment variable is set correctly is the essential final step before running the Python code.
 
-Here is the revised table including the verification commands using `echo` for each operating system:
 
 #### Step 3: 🔑 Verifying/Testing the Environment Variable
 
