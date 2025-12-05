@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 parser = ArgumentParser(description="Simple CLI tool to display recent github activities")
 
 # positional argument
-parser.add_argument("username", type=str, help="Valid GitHub Username")
+parser.add_argument("username", type=str, required=True, help="Valid GitHub Username")
 
 # parse argument
 args = parser.parse_args()
